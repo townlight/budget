@@ -102,7 +102,7 @@ def test_get_narrative_without_auth_config_returns_actionable_503(monkeypatch) -
 
     assert response.status_code == 503
     detail = response.json()["detail"]
-    assert detail["message"] == "CivicBudget persisted workpaper retrieval auth is not configured."
+    assert detail["message"] == "Townlight Budget persisted workpaper retrieval auth is not configured."
     assert "Set CIVICBUDGET_AUTH_TOKEN_ROLES" in detail["fix"]
 
 

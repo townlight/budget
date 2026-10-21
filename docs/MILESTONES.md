@@ -1,4 +1,6 @@
-# CivicBudget Milestones
+<a id="civicbudget-milestones"></a>
+
+# Townlight Budget Milestones
 
 ## 0.1.0 Foundation
 

@@ -34,10 +34,10 @@ def test_health_reports_civiccore_pin():
 def test_public_ui_contains_version_boundaries_and_dependency():
     text = client.get("/civicbudget").text
 
-    assert "CivicBudget v0.1.2" in text
+    assert "Townlight Budget v0.1.2" in text
     assert "No ERP" in text
     assert "published foundation label under suite-wide release-recovery review" in text
-    assert "CivicCore v0.4.0 release wheel" in text
+    assert "Townlight Core v0.4.0 release wheel" in text
     assert "Shipping v0.1.2" not in text
 
 
@@ -115,7 +115,7 @@ def test_current_docs_are_version_and_dependency_current() -> None:
         for path in ["README.md", "README.txt", "USER-MANUAL.md", "USER-MANUAL.txt"]
     )
 
-    assert "published CivicCore v0.4.0 release wheel" in current_docs
+    assert "published Townlight Core v0.4.0 release wheel" in current_docs
     assert "civiccore==0.3.0" not in current_docs
     assert "v0.1.1" not in current_docs
 

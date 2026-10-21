@@ -1,3 +1,5 @@
-# CivicBudget Agent Instructions
+<a id="civicbudget-agent-instructions"></a>
+
+# Townlight Budget Agent Instructions
 
 Keep v0.1.1 honest: narrative/checklist support only, not ERP, accounting, payroll, budget adoption, or approvals. Run `bash scripts/verify-release.sh` before push.

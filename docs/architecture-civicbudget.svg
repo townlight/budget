@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
-  <title id="title">CivicBudget v0.1.0 architecture</title>
-  <desc id="desc">Staff-provided budget facts flow into CivicBudget drafting helpers, then finance review approves outputs before future CivicClerk and CivicData handoffs.</desc>
+  <title id="title">Townlight Budget v0.1.0 architecture</title>
+  <desc id="desc">Staff-provided budget facts flow into Townlight Budget drafting helpers, then finance review approves outputs before future Townlight Meetings and Townlight Data handoffs.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#eef6ff"/>
@@ -14,7 +14,7 @@
     </marker>
   </defs>
   <rect width="1200" height="720" fill="url(#bg)"/>
-  <text x="70" y="82" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#17202a">CivicBudget v0.1.0</text>
+  <text x="70" y="82" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#17202a">Townlight Budget v0.1.0</text>
   <text x="70" y="120" font-family="Aptos, Segoe UI, sans-serif" font-size="20" fill="#35516b">Budget narrative support without replacing official finance systems</text>
   <g filter="url(#shadow)">
     <rect x="70" y="180" width="250" height="140" rx="24" fill="#ffffff" stroke="#bad0e8"/>
@@ -24,7 +24,7 @@
   </g>
   <g filter="url(#shadow)">
     <rect x="460" y="150" width="300" height="240" rx="26" fill="#ffffff" stroke="#bad0e8"/>
-    <text x="500" y="196" font-family="Aptos, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#24507a">CivicBudget API</text>
+    <text x="500" y="196" font-family="Aptos, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#24507a">Townlight Budget API</text>
     <text x="500" y="236" font-family="Aptos, Segoe UI, sans-serif" font-size="16" fill="#17202a">Variance analysis</text>
     <text x="500" y="262" font-family="Aptos, Segoe UI, sans-serif" font-size="16" fill="#17202a">Narrative drafts</text>
     <text x="500" y="288" font-family="Aptos, Segoe UI, sans-serif" font-size="16" fill="#17202a">Memo drafts</text>
@@ -44,5 +44,5 @@
     <text x="200" y="532" font-family="Aptos, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#7b5318">Boundary</text>
     <text x="200" y="568" font-family="Aptos, Segoe UI, sans-serif" font-size="17" fill="#17202a">No ERP, accounting, payroll, official approvals, budget adoption, live LLM calls, or live finance connectors ship in v0.1.0.</text>
   </g>
-  <text x="70" y="665" font-family="Aptos, Segoe UI, sans-serif" font-size="17" fill="#35516b">Future handoffs: CivicClerk hearing packet workflow and CivicData transparency publishing.</text>
+  <text x="70" y="665" font-family="Aptos, Segoe UI, sans-serif" font-size="17" fill="#35516b">Future handoffs: Townlight Meetings hearing packet workflow and Townlight Data transparency publishing.</text>
 </svg>

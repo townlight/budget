@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "civicbudget"
 version = "0.1.2"
-description = "CivicBudget foundation for budget narratives, line-item analysis, hearing packets, and transparency summaries."
+description = "Townlight Budget foundation for budget narratives, line-item analysis, hearing packets, and transparency summaries."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "AGPL-3.0-only" }
