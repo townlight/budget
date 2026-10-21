@@ -1,12 +1,16 @@
-# CivicBudget User Manual
+<a id="civicbudget-user-manual"></a>
 
-## What CivicBudget Is
+# Townlight Budget User Manual
 
-CivicBudget helps municipal finance teams prepare budget-supporting text, checklists, and optional local workpaper records. It is designed for budget narrative preparation, line-item variance explanation, department memo drafting, hearing packet readiness, resident-facing budget summaries, and optional GFOA presentation checklist review.
+<a id="what-civicbudget-is"></a>
+
+## What Townlight Budget Is
+
+Townlight Budget helps municipal finance teams prepare budget-supporting text, checklists, and optional local workpaper records. It is designed for budget narrative preparation, line-item variance explanation, department memo drafting, hearing packet readiness, resident-facing budget summaries, and optional GFOA presentation checklist review.
 
 Published version `0.1.2` is a foundation label under suite-wide release-recovery review. Do not promote it as production budget software until the recovery gates and a future v1.0.0 definition of done are complete.
 
-CivicBudget does not make budget decisions. It does not approve numbers. It does not replace the city ERP, accounting system, payroll system, fund-accounting system, or budget adoption process.
+Townlight Budget does not make budget decisions. It does not approve numbers. It does not replace the city ERP, accounting system, payroll system, fund-accounting system, or budget adoption process.
 
 ## Non-Technical Staff Guide
 
@@ -26,7 +30,9 @@ CivicBudget does not make budget decisions. It does not approve numbers. It does
 - Confirm public summaries with finance leadership and communications staff.
 - Confirm hearing packet requirements with the clerk before agenda publication.
 
-### What CivicBudget Will Not Do
+<a id="what-civicbudget-will-not-do"></a>
+
+### What Townlight Budget Will Not Do
 
 - It will not approve a department budget.
 - It will not submit budget amendments.
@@ -45,7 +51,7 @@ python -m uvicorn civicbudget.main:app --host 127.0.0.1 --port 8139
 
 ### Dependency
 
-CivicBudget v0.1.2 depends on the published CivicCore v0.4.0 release wheel.
+Townlight Budget v0.1.2 depends on the published Townlight Core v0.4.0 release wheel.
 
 ### Verification
 
@@ -69,10 +75,10 @@ The release gate checks documentation, placeholder imports, tests, Ruff, package
 - `POST /api/v1/civicbudget/resident-summary`
 - `POST /api/v1/civicbudget/gfoa-review`
 
-Set `CIVICBUDGET_WORKPAPER_DB_URL` to enable local SQLAlchemy-backed narrative and hearing packet workpaper records. If the variable is not set, CivicBudget keeps deterministic stateless behavior and retrieval endpoints return actionable configuration guidance.
+Set `CIVICBUDGET_WORKPAPER_DB_URL` to enable local SQLAlchemy-backed narrative and hearing packet workpaper records. If the variable is not set, Townlight Budget keeps deterministic stateless behavior and retrieval endpoints return actionable configuration guidance.
 
 ## Supporting Architecture
 
-![CivicBudget architecture](docs/architecture-civicbudget.svg)
+![Townlight Budget architecture](docs/architecture-civicbudget.svg)
 
-The architecture is intentionally local and conservative in v0.1.2. Staff provide budget facts from official systems. CivicBudget creates reviewable drafts, checklists, and optional local workpaper records. Finance staff approve outputs. Future releases can add read-only ERP imports, CivicClerk packet handoffs, and CivicData transparency publishing without changing the boundary that official decisions remain with municipal staff.
+The architecture is intentionally local and conservative in v0.1.2. Staff provide budget facts from official systems. Townlight Budget creates reviewable drafts, checklists, and optional local workpaper records. Finance staff approve outputs. Future releases can add read-only ERP imports, Townlight Meetings packet handoffs, and Townlight Data transparency publishing without changing the boundary that official decisions remain with municipal staff.

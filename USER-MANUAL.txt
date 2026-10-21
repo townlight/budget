@@ -1,19 +1,19 @@
-CivicBudget User Manual
+Townlight Budget User Manual
 
 Non-technical staff:
-Use CivicBudget to prepare budget narrative drafts, line-item variance notes, department memos, hearing packet checklists, resident summaries, optional GFOA checklist reviews, and optional local workpaper records. Published version 0.1.2 is a foundation label under suite-wide release-recovery review. Do not promote it as production budget software until the recovery gates and a future v1.0.0 definition of done are complete. Confirm every dollar amount, explanation, and public statement with finance leadership before use.
+Use Townlight Budget to prepare budget narrative drafts, line-item variance notes, department memos, hearing packet checklists, resident summaries, optional GFOA checklist reviews, and optional local workpaper records. Published version 0.1.2 is a foundation label under suite-wide release-recovery review. Do not promote it as production budget software until the recovery gates and a future v1.0.0 definition of done are complete. Confirm every dollar amount, explanation, and public statement with finance leadership before use.
 
 What it is not:
-CivicBudget is not an ERP, budgeting system, accounting system, payroll system, fund-accounting system, budget-adoption workflow, official approval system, live LLM runtime, or live finance-system connector.
+Townlight Budget is not an ERP, budgeting system, accounting system, payroll system, fund-accounting system, budget-adoption workflow, official approval system, live LLM runtime, or live finance-system connector.
 
 IT/technical:
 Install with:
 python -m pip install -e ".[dev]"
 Run with:
 python -m uvicorn civicbudget.main:app --host 127.0.0.1 --port 8139
-Dependency: published CivicCore v0.4.0 release wheel.
+Dependency: published Townlight Core v0.4.0 release wheel.
 Release gate: bash scripts/verify-release.sh.
-Optional persistence: set CIVICBUDGET_WORKPAPER_DB_URL to enable SQLAlchemy-backed narrative and hearing packet workpaper records. Without it, CivicBudget remains deterministic and stateless.
+Optional persistence: set CIVICBUDGET_WORKPAPER_DB_URL to enable SQLAlchemy-backed narrative and hearing packet workpaper records. Without it, Townlight Budget remains deterministic and stateless.
 
 Architecture:
-Staff provide budget facts from official finance systems. CivicBudget creates reviewable drafts, checklists, and optional local workpaper records. Finance staff approve outputs. Future releases can add read-only ERP imports, CivicClerk packet handoffs, and CivicData transparency publishing.
+Staff provide budget facts from official finance systems. Townlight Budget creates reviewable drafts, checklists, and optional local workpaper records. Finance staff approve outputs. Future releases can add read-only ERP imports, Townlight Meetings packet handoffs, and Townlight Data transparency publishing.

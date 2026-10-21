@@ -1,4 +1,4 @@
-"""FastAPI runtime foundation for CivicBudget."""
+"""FastAPI runtime foundation for Townlight Budget."""
 import os
 
 from civiccore import __version__ as CIVICCORE_VERSION
@@ -19,11 +19,10 @@ from civicbudget.public_ui import render_public_lookup_page
 from civicbudget.resident_summary import draft_resident_summary
 
 app = FastAPI(
-    title="CivicBudget",
+    title='Townlight Budget',
     version=__version__,
     description=(
-        "Budget narratives, line-item analysis, hearing packet prep, and transparency "
-        "summaries for CivicSuite."
+        'Budget narratives, line-item analysis, hearing packet prep, and transparency summaries for Townlight.'
     ),
 )
 
@@ -76,7 +75,7 @@ def root() -> dict[str, str]:
         "version": __version__,
         "status": "budget narrative foundation plus workpaper persistence",
         "message": (
-            "CivicBudget package, API foundation, line-item analysis, budget narratives, "
+            "Townlight Budget package, API foundation, line-item analysis, budget narratives, "
             "department memos, hearing packet checklists, resident summaries, GFOA checklist, "
             "optional database-backed narrative and hearing packet workpapers, and public UI foundation "
             "are online; ERP, budgeting system, accounting, payroll, budget adoption, official approvals, "
@@ -114,7 +113,7 @@ def _require_workpaper_reader(
 ) -> AuthenticatedPrincipal:
     return authorize_bearer_roles(
         credentials,
-        service_name="CivicBudget",
+        service_name='Townlight Budget',
         feature_name="persisted workpaper retrieval",
         token_roles_env_var="CIVICBUDGET_AUTH_TOKEN_ROLES",
         allowed_roles={"workpaper_reader", "budget_admin"},
@@ -152,7 +151,7 @@ def get_narrative(
         raise HTTPException(
             status_code=503,
             detail={
-                "message": "CivicBudget workpaper persistence is not configured.",
+                "message": "Townlight Budget workpaper persistence is not configured.",
                 "fix": "Set CIVICBUDGET_WORKPAPER_DB_URL to retrieve persisted budget narrative records.",
             },
         )
@@ -204,7 +203,7 @@ def get_hearing_packet(
         raise HTTPException(
             status_code=503,
             detail={
-                "message": "CivicBudget workpaper persistence is not configured.",
+                "message": "Townlight Budget workpaper persistence is not configured.",
                 "fix": "Set CIVICBUDGET_WORKPAPER_DB_URL to retrieve persisted hearing packet records.",
             },
         )

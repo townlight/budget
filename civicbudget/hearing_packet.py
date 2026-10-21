@@ -9,4 +9,4 @@ class HearingPacketChecklist:
 
 def build_hearing_packet_checklist(hearing_name: str, required_items: list[str]) -> HearingPacketChecklist:
     items=tuple(i.strip() for i in required_items if i.strip())
-    return HearingPacketChecklist(hearing_name.strip(), ("Confirm notice and agenda deadline.", *items, "Attach finance-approved memo and exhibits.", "Coordinate CivicClerk packet handoff."), True)
+    return HearingPacketChecklist(hearing_name.strip(), ("Confirm notice and agenda deadline.", *items, "Attach finance-approved memo and exhibits.", "Coordinate Townlight Meetings packet handoff."), True)
