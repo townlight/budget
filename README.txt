@@ -1,13 +1,81 @@
-Townlight Budget published v0.1.2 is the Townlight budget narrative and transparency support module and is a foundation label under suite-wide release-recovery review. Do not promote it as production budget software until the recovery gates and a future v1.0.0 definition of done are complete.
+  Parked foundation — outside the released Windows suite. This repository contains exploratory/support code, not a completed Townlight product. It is not installed or supported by Windows 1.8.1.1. Historical examples, package names and dependency pins below describe this foundation and must not be used as current suite installation instructions. Use the released Windows suite, current modules and acceptance limits.
 
-Available: line-item variance analysis, budget narrative drafts, department memo drafts, hearing packet checklists, resident plain-English summaries, optional GFOA checklist support, optional database-backed narrative and hearing packet workpaper records, FastAPI runtime, docs, tests, and browser QA evidence.
+Townlight Budget
 
-Boundaries: Townlight Budget is not an ERP, budgeting system, accounting system, payroll system, fund-accounting tool, budget-adoption workflow, official approval system, live LLM runtime, or live finance-system connector.
+Townlight Budget is the Townlight budget narrative and transparency support module. Published version 0.1.2 is a foundation label under suite-wide release-recovery review. It helps finance staff prepare line-item variance notes, department budget narratives, council-facing budget memos, hearing packet checklists, plain-English resident summaries, optional GFOA presentation checklist reviews, and optional local workpaper records. Do not promote it as production budget software until the recovery gates and a future v1.0.0 definition of done are complete.
 
-Install:
-python -m pip install -e ".[dev]"
-python -m uvicorn civicbudget.main:app --host 127.0.0.1 --port 8139
+It is intentionally not an ERP, budgeting system, accounting system, payroll system, fund-accounting tool, budget-adoption workflow, or official approval system. Townlight Budget prepares reviewable staff work products; finance staff remain responsible for every number, narrative, and public-facing statement.
 
-Dependency: published Townlight Core v0.4.0 release wheel.
+Available in v0.1.2
 
-Optional persistence: set CIVICBUDGET_WORKPAPER_DB_URL to enable SQLAlchemy-backed narrative and hearing packet workpaper records. Without it, Townlight Budget remains deterministic and stateless.
+- Line-item variance analysis with finance-review notes.
+- Budget narrative draft assembly from department priorities and line-item inputs.
+- Department budget memo draft scaffolding.
+- Budget hearing packet checklist support for Townlight Meetings handoff.
+- Optional database-backed narrative and hearing packet workpaper records via CIVICBUDGET_WORKPAPER_DB_URL.
+- Bearer-token protection for persisted narrative and hearing packet retrieval via CIVICBUDGET_AUTH_TOKEN_ROLES.
+- Plain-English resident budget summary drafts.
+- Optional GFOA presentation checklist support.
+- FastAPI runtime with health, public landing page, and deterministic API endpoints.
+- Release gates, docs, browser QA evidence, and package build artifacts.
+
+Not shipped yet
+
+- ERP, budgeting, accounting, payroll, fund accounting, budget adoption, official approvals, live LLM calls, or live finance-system connector runtime.
+- Live Townlight Meetings packet submission and live Townlight Data publishing handoffs. v0.1.2 prepares the handoff checklist; later releases will wire the cross-module workflow.
+- Finance approval queues, role-based workflow, and signed publication records.
+
+Install
+
+    python -m pip install -e ".[dev]"
+    python -m uvicorn civicbudget.main:app --host 127.0.0.1 --port 8139
+
+Townlight Budget v0.1.2 is pinned to the published Townlight Core v0.4.0 release wheel.
+
+Operator Path
+
+1.  Finance or department staff collect line-item inputs from the city budget or ERP system.
+2.  Townlight Budget identifies material variances and drafts review notes.
+3.  Staff draft department narratives, memos, hearing packet checklists, and resident summaries.
+4.  Finance reviews and approves the output outside Townlight Budget.
+5.  Future releases will hand approved packet materials to Townlight Meetings and public transparency summaries to Townlight Data.
+
+API Surface
+
+- GET / returns honest current-state metadata and roadmap boundary.
+- GET /health returns runtime and Townlight Core version status.
+- GET /civicbudget renders the public module overview.
+- POST /api/v1/civicbudget/line-items returns variance analysis.
+- POST /api/v1/civicbudget/narrative returns a finance-review-required narrative draft and a narrative_id when persistence is configured.
+- GET /api/v1/civicbudget/narrative/{narrative_id} retrieves a persisted narrative when both CIVICBUDGET_WORKPAPER_DB_URL and CIVICBUDGET_AUTH_TOKEN_ROLES are configured.
+- POST /api/v1/civicbudget/memo returns a non-approval budget memo draft.
+- POST /api/v1/civicbudget/hearing-packet returns a Townlight Meetings-ready checklist and a packet_id when persistence is configured.
+- GET /api/v1/civicbudget/hearing-packet/{packet_id} retrieves a persisted hearing packet when both CIVICBUDGET_WORKPAPER_DB_URL and CIVICBUDGET_AUTH_TOKEN_ROLES are configured.
+- POST /api/v1/civicbudget/resident-summary returns a publication-review-required public summary draft.
+- POST /api/v1/civicbudget/gfoa-review returns a checklist, not certification.
+
+Optional Persistence
+
+Set CIVICBUDGET_WORKPAPER_DB_URL to enable local SQLAlchemy-backed narrative and hearing packet workpaper records:
+
+    export CIVICBUDGET_WORKPAPER_DB_URL="sqlite+pysqlite:///./civicbudget.db"
+
+Set CIVICBUDGET_AUTH_TOKEN_ROLES to a JSON object that maps bearer tokens to roles before exposing persisted retrieval:
+
+    {
+      "demo-reader-token": ["workpaper_reader"],
+      "budget-admin-token": "workpaper_reader,budget_admin"
+    }
+
+Without the database variable, Townlight Budget remains deterministic and stateless. Without the auth variable, persisted retrieval endpoints return actionable 503 responses that name the missing auth configuration. With auth configured, anonymous callers receive 401 and callers without an allowed role receive 403.
+
+Documentation
+
+- User Manual
+- Architecture
+- Landing Page
+- Release Notes
+
+License
+
+Code: AGPL-3.0-only, with the TownLight Public Institution Exception for qualifying deployments. See LICENSE and LICENSE-EXCEPTION.md. Documentation: CC BY 4.0 (LICENSE-DOCS).
