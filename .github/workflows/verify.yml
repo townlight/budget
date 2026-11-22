@@ -1,10 +1,14 @@
 name: verify
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request:
+
 jobs:
   # Docs-only changes start no CI run (docs get push, merge and publish only).
   changes:
     name: Detect code changes
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 5
     permissions:
       contents: read
@@ -42,10 +46,23 @@ jobs:
   verify:
     needs: changes
     if: needs.changes.outputs.code == 'true'
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
-        with: {python-version: "3.11"}
-      - run: python -m pip install -e ".[dev]"
-      - run: bash scripts/verify-release.sh
+        with:
+          python-version: '3.11'
+      - name: Checkout townlight/core
+        uses: actions/checkout@v5
+        with:
+          repository: townlight/core
+          ref: 2f6ba9be4a95e3772dc47a3682ac780c5283b626
+          path: townlight-core-source
+          persist-credentials: false
+      - name: Install townlight core
+        run: python -m pip install --no-deps ./townlight-core-source
+      - name: Install package
+        run: python -m pip install -e ".[dev]"
+      - name: Run release gate
+        shell: bash
+        run: bash scripts/verify-release.sh

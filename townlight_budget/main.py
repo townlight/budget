@@ -1,22 +1,22 @@
 """FastAPI runtime foundation for Townlight Budget."""
 import os
 
-from civiccore import __version__ as CIVICCORE_VERSION
-from civiccore.auth import AuthenticatedPrincipal, authorize_bearer_roles
+from townlight_core import __version__ as CIVICCORE_VERSION
+from townlight_core.auth import AuthenticatedPrincipal, authorize_bearer_roles
 from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
-from civicbudget import __version__
-from civicbudget.gfoa_review import review_gfoa_alignment
-from civicbudget.hearing_packet import build_hearing_packet_checklist
-from civicbudget.line_item_analysis import analyze_line_items
-from civicbudget.memo import draft_budget_memo
-from civicbudget.narrative import draft_budget_narrative
-from civicbudget.persistence import BudgetWorkpaperRepository, StoredBudgetNarrative, StoredHearingPacket
-from civicbudget.public_ui import render_public_lookup_page
-from civicbudget.resident_summary import draft_resident_summary
+from townlight_budget import __version__
+from townlight_budget.gfoa_review import review_gfoa_alignment
+from townlight_budget.hearing_packet import build_hearing_packet_checklist
+from townlight_budget.line_item_analysis import analyze_line_items
+from townlight_budget.memo import draft_budget_memo
+from townlight_budget.narrative import draft_budget_narrative
+from townlight_budget.persistence import BudgetWorkpaperRepository, StoredBudgetNarrative, StoredHearingPacket
+from townlight_budget.public_ui import render_public_lookup_page
+from townlight_budget.resident_summary import draft_resident_summary
 
 app = FastAPI(
     title='Townlight Budget',

@@ -4,8 +4,8 @@ import tomllib
 
 from fastapi.testclient import TestClient
 
-from civicbudget import __version__
-from civicbudget.main import app
+from townlight_budget import __version__
+from townlight_budget.main import app
 
 client = TestClient(app)
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,17 +27,17 @@ def test_health_reports_civiccore_pin():
 
     assert payload["status"] == "ok"
     assert payload["service"] == "civicbudget"
-    assert payload["version"] == "0.1.2"
-    assert re.fullmatch(r"\d+\.\d+\.\d+", payload["civiccore_version"])
+    assert payload["version"] == "0.2.0"
+    assert re.fullmatch(r"\d+\.\d+\.\d+(?:\.dev\d+)?", payload["civiccore_version"])
 
 
 def test_public_ui_contains_version_boundaries_and_dependency():
     text = client.get("/civicbudget").text
 
-    assert "Townlight Budget v0.1.2" in text
-    assert "No ERP" in text
-    assert "published foundation label under suite-wide release-recovery review" in text
-    assert "Townlight Core v0.4.0 release wheel" in text
+    assert "Townlight Budget v0.2.0" in text
+    assert "accounting, payroll" in text
+    assert "Windows source candidate" in text
+    assert "townlight-core==1.3.0.dev2" in text
     assert "Shipping v0.1.2" not in text
 
 
@@ -94,10 +94,10 @@ def test_pyproject_uses_published_civiccore_release_wheel() -> None:
     dependencies = pyproject["project"]["dependencies"]
     assert any(
         dependency
-        == "civiccore @ https://github.com/CivicSuite/civiccore/releases/download/v0.4.0/civiccore-0.4.0-py3-none-any.whl"
+        == "townlight-core==1.3.0.dev2"
         for dependency in dependencies
     )
-    assert pyproject["tool"]["hatch"]["metadata"]["allow-direct-references"] is True
+    assert pyproject["project"]["name"] == "townlight-budget"
 
 
 def test_docs_gate_rejects_stale_shipping_product_ready_and_mojibake_markers() -> None:
@@ -115,7 +115,7 @@ def test_current_docs_are_version_and_dependency_current() -> None:
         for path in ["README.md", "README.txt", "USER-MANUAL.md", "USER-MANUAL.txt"]
     )
 
-    assert "published Townlight Core v0.4.0 release wheel" in current_docs
+    assert "townlight-core==1.3.0.dev2" in current_docs
     assert "civiccore==0.3.0" not in current_docs
     assert "v0.1.1" not in current_docs
 
@@ -123,8 +123,8 @@ def test_current_docs_are_version_and_dependency_current() -> None:
 def test_docs_index_marks_foundation_label_provisional() -> None:
     text = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
 
-    assert "published foundation label under suite-wide release-recovery review" in text
-    assert "v0.1.2 foundation under recovery review" in text
+    assert "Windows source candidate" in text
+    assert "v0.2.0 Windows source candidate" in text
     assert "release-recovery-status.md" in text
     assert "Shipping v0.1.2" not in text
     assert "Ships Today" not in text

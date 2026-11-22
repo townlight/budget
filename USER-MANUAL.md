@@ -1,44 +1,40 @@
-<a id="civicbudget-user-manual"></a>
+# Townlight Budget 0.2.0 User Manual
 
-# Townlight Budget User Manual
+Applies to `townlight-budget` 0.2.0, not yet published. Source candidate for Windows packaging. Windows integrated workflow. Depends on exact `townlight-core==1.3.0.dev2`; no added requirements.
 
-<a id="what-civicbudget-is"></a>
+## Roles
 
-## What Townlight Budget Is
+Current roles: city-staff/admin review; clerk/admin records adoption; local-admin approves the queue. Resident export is via configured Portal Datasets.
 
-Townlight Budget helps municipal finance teams prepare budget-supporting text, checklists, and optional local workpaper records. It is designed for budget narrative preparation, line-item variance explanation, department memo drafting, hearing packet readiness, resident-facing budget summaries, and optional GFOA presentation checklist review.
+## Prepare and import
 
-Published version `0.1.2` is a foundation label under suite-wide release-recovery review. Do not promote it as production budget software until the recovery gates and a future v1.0.0 definition of done are complete.
+On the full profile, select Budget. Existing city-staff/admin users import a UTF-8 CSV with this exact header:
 
-Townlight Budget does not make budget decisions. It does not approve numbers. It does not replace the city ERP, accounting system, payroll system, fund-accounting system, or budget adoption process.
+`department,account_code,description,prior_year_amount,proposed_amount`
 
-## Non-Technical Staff Guide
+Example: `0100,05100,Office supplies,1234.50,1250.00`
 
-### Typical Workflow
+Use leading zeros where needed and two decimal places. Any row error across the file rejects the whole import.
 
-1. Start with department priorities and line-item amounts from your official finance system.
-2. Use line-item analysis to identify material changes that need explanation.
-3. Draft a department budget narrative and memo.
-4. Build a hearing packet checklist for clerk coordination.
-5. Draft a plain-English resident summary.
-6. Send all outputs through normal finance and management review before publication or council use.
+## Review and revision file
 
-### What To Review Before Use
+Review amounts in exact cents. City-staff/admin review checks the finance checkbox, then downloads `budget-revision.txt`. Workpapers are reusable. A standalone API supports narrative and checks.
 
-- Confirm every dollar amount against the official budget or ERP system.
-- Confirm variance explanations with the department budget lead.
-- Confirm public summaries with finance leadership and communications staff.
-- Confirm hearing packet requirements with the clerk before agenda publication.
+## Council and public packet
 
-<a id="what-civicbudget-will-not-do"></a>
+In Meetings, clerk/admin records adoption: selects the public candidate agenda item, includes the unchanged file in the approved public council packet, and records the council motion and roll call. In Budget, select the meeting, approval, and motion; confirm carried with the reviewed public summary.
 
-### What Townlight Budget Will Not Do
+## Queue and Portal Datasets
 
-- It will not approve a department budget.
-- It will not submit budget amendments.
-- It will not post official notices or packets.
-- It will not certify GFOA compliance.
-- It will not connect to live ERP or accounting systems in v0.1.2.
+A local-admin approves the queue. A resident downloads CSV, JSON, dictionary, and summary from configured Portal Datasets. Queued means pending delivery.
+
+## Correct a draft
+
+Create a new revision with new approval evidence: corrected CSV, new city-staff/admin review, new finance checkbox, new `budget-revision.txt`, new packet/motion/roll call, and new Budget confirmation. Do not reuse prior approval evidence.
+
+## Scope
+
+Budget handles a council adoption record only. Accounting, payroll, and ERP remain external.
 
 ## IT / Technical Guide
 
@@ -46,12 +42,12 @@ Townlight Budget does not make budget decisions. It does not approve numbers. It
 
 ```bash
 python -m pip install -e ".[dev]"
-python -m uvicorn civicbudget.main:app --host 127.0.0.1 --port 8139
+python -m uvicorn townlight_budget.main:app --host 127.0.0.1 --port 8139
 ```
 
 ### Dependency
 
-Townlight Budget v0.1.2 depends on the published Townlight Core v0.4.0 release wheel.
+The source candidate uses `townlight-core==1.3.0.dev2`. The standalone API serves workpapers. The Windows suite runtime supplies the adoption workflow.
 
 ### Verification
 

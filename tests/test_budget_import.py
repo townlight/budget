@@ -1,4 +1,4 @@
-from civicbudget.budget_import import parse_budget_csv
+from townlight_budget.budget_import import parse_budget_csv
 
 
 def test_exact_totals_and_preserved_zero_account_with_bom_and_quoted_fields():

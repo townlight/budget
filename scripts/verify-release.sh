@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "VERIFY-RELEASE: CivicBudget v0.1.2"
+echo "VERIFY-RELEASE: Townlight Budget v0.2.0"
 PYTHON_CANDIDATES=(); [[ -n "${CIVICBUDGET_RELEASE_PYTHON:-}" ]] && PYTHON_CANDIDATES+=("$CIVICBUDGET_RELEASE_PYTHON")
 PYTHON_CANDIDATES+=(python3 python py)
 PYTHON_BIN=""
@@ -16,7 +16,7 @@ rm -rf dist
 "$PYTHON_BIN" - <<'PY'
 from pathlib import Path
 import hashlib
-expected={"civicbudget-0.1.2-py3-none-any.whl","civicbudget-0.1.2.tar.gz"}
+expected={"townlight_budget-0.2.0-py3-none-any.whl","townlight_budget-0.2.0.tar.gz"}
 dist=Path("dist"); found={p.name for p in dist.iterdir() if p.is_file()}; missing=expected-found
 if missing: raise SystemExit(f"missing artifacts: {sorted(missing)}")
 lines=[]
@@ -25,8 +25,8 @@ for name in sorted(expected): lines.append(f"{hashlib.sha256((dist/name).read_by
 print("[PASS] build artifacts and SHA256SUMS")
 PY
 "$PYTHON_BIN" - <<'PY'
-import civicbudget
-assert civicbudget.__version__ == "0.1.2"
-print("[PASS] package version 0.1.2")
+import townlight_budget
+assert townlight_budget.__version__ == "0.2.0"
+print("[PASS] package version 0.2.0")
 PY
 echo "VERIFY-RELEASE: PASSED"

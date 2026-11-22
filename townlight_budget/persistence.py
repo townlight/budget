@@ -7,9 +7,9 @@ from uuid import uuid4
 import sqlalchemy as sa
 from sqlalchemy import Engine, create_engine
 
-from civicbudget.hearing_packet import build_hearing_packet_checklist
-from civicbudget.line_item_analysis import LineItemVariance
-from civicbudget.narrative import draft_budget_narrative
+from townlight_budget.hearing_packet import build_hearing_packet_checklist
+from townlight_budget.line_item_analysis import LineItemVariance
+from townlight_budget.narrative import draft_budget_narrative
 
 
 metadata = sa.MetaData()
