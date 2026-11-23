@@ -1,7 +1,7 @@
 """Budget narrative drafting support."""
 from dataclasses import dataclass
 
-from civicbudget.line_item_analysis import LineItemVariance, analyze_line_items
+from townlight_budget.line_item_analysis import LineItemVariance, analyze_line_items
 
 
 @dataclass(frozen=True)

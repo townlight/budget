@@ -1,14 +1,14 @@
-from civicbudget import __version__
-from civicbudget.gfoa_review import review_gfoa_alignment
-from civicbudget.hearing_packet import build_hearing_packet_checklist
-from civicbudget.line_item_analysis import analyze_line_items
-from civicbudget.memo import draft_budget_memo
-from civicbudget.narrative import draft_budget_narrative
-from civicbudget.resident_summary import draft_resident_summary
+from townlight_budget import __version__
+from townlight_budget.gfoa_review import review_gfoa_alignment
+from townlight_budget.hearing_packet import build_hearing_packet_checklist
+from townlight_budget.line_item_analysis import analyze_line_items
+from townlight_budget.memo import draft_budget_memo
+from townlight_budget.narrative import draft_budget_narrative
+from townlight_budget.resident_summary import draft_resident_summary
 
 
 def test_version_is_release_version():
-    assert __version__ == "0.1.2"
+    assert __version__ == "0.2.0"
 
 
 def test_line_item_analysis_flags_material_variance():

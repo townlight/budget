@@ -4,8 +4,8 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from civicbudget.main import app, _dispose_workpaper_repository
-from civicbudget.persistence import BudgetWorkpaperRepository
+from townlight_budget.main import app, _dispose_workpaper_repository
+from townlight_budget.persistence import BudgetWorkpaperRepository
 
 
 client = TestClient(app)

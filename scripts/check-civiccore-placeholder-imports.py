@@ -14,7 +14,7 @@ PLACEHOLDERS = (
     "search",
     "verification",
 )
-SOURCE_ROOT = Path("civicbudget")
+SOURCE_ROOT = Path("townlight_budget")
 pattern = re.compile(r"^\s*(?:from|import)\s+civiccore\.(" + "|".join(PLACEHOLDERS) + r")\b")
 violations: list[str] = []
 
