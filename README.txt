@@ -1,6 +1,6 @@
 # Townlight Budget
 
-Townlight Budget Windows candidate, package `townlight-budget` `0.2.0`. Source candidate only; not a software release.
+Townlight Budget Windows package, package `townlight-budget` `0.2.0`. Packaged with Windows beta 1.9.3.1; not a standalone software release. See the [GitHub release](https://github.com/townlight/townlight/releases/tag/townlight-windows-v1.9.3.1).
 
 Depends on exact `townlight-core==1.3.0.dev2`.
 

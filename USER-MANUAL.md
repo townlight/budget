@@ -47,7 +47,7 @@ python -m uvicorn townlight_budget.main:app --host 127.0.0.1 --port 8139
 
 ### Dependency
 
-The source candidate uses `townlight-core==1.3.0.dev2`. The standalone API serves workpapers. The Windows suite runtime supplies the adoption workflow.
+The packaged Windows beta 1.9.3.1 uses `townlight-core==1.3.0.dev2`. The standalone API serves workpapers. The Windows suite runtime supplies the adoption workflow.
 
 ### Verification
 
