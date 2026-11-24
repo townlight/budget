@@ -3,44 +3,112 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Townlight Budget v0.1.2 recovery status</title>
-  <style>
-    :root { --ink:#17202a; --blue:#24507a; --pale:#e8f1fb; --gold:#bf8f35; --paper:#fffaf0; }
-    body { margin:0; font-family:Aptos, "Segoe UI", sans-serif; color:var(--ink); background:linear-gradient(135deg,#edf7ff,var(--paper)); }
-    main { width:min(1100px, calc(100% - 32px)); margin:auto; padding:52px 0; }
-    h1 { font:800 clamp(2.4rem, 7vw, 5rem)/.95 Georgia, serif; margin:.2em 0; }
-    .lede { font-size:1.25rem; line-height:1.6; max-width:850px; }
-    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:28px; }
-    .card { background:rgba(255,255,255,.92); border:1px solid #bad0e8; border-radius:24px; padding:24px; box-shadow:0 18px 36px #26313b18; }
-    .boundary { border-color:var(--gold); background:#fff9ed; }
-    .badge{display:inline-block;background:var(--blue);color:white;padding:.5rem .85rem;border-radius:999px;font-weight:900}
-    img { width:100%; height:auto; border-radius:22px; border:1px solid #bad0e8; background:white; }
-    code { background:var(--pale); padding:.1rem .35rem; border-radius:.35rem; }
-    a { color:#174a7c; font-weight:800; }
-    :focus-visible{outline:4px solid var(--gold);outline-offset:3px}
-    @media(max-width:800px) { .grid { grid-template-columns:1fr; } main { padding-top:34px; } }
-  </style>
+  <title>Townlight Budget</title>
+  <meta name="description" content="Budget imports figures, finance reviews them, seals the public hearing packet and records vote and adoption. Approved data goes through Data.">
+  <link rel="canonical" href="https://townlight.github.io/products/budget/">
+  <meta property="og:title" content="Townlight Budget">
+  <meta property="og:description" content="Budget imports figures, finance reviews them, seals the public hearing packet and records vote and adoption. Approved data goes through Data.">
+  <meta property="og:image" content="https://townlight.github.io/brand/png/townlight-hall-social-preview.png">
+  <link rel="icon" href="https://townlight.github.io/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="https://townlight.github.io/brand/png/townlight-hall-app-icon-180.png">
+  <link rel="stylesheet" href="https://townlight.github.io/assets/site.css">
+  <link rel="stylesheet" href="https://townlight.github.io/assets/landing.css">
 </head>
-<body>
-  <main><section id="windows-current"><h2>Windows 1.9.3.2 current release</h2><p>Townlight for Windows 1.9.3.2 is the current signed public beta. <a href="https://github.com/townlight/townlight/releases/tag/townlight-windows-v1.9.3.2">Release and downloads</a> · <a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/ACCEPTANCE-Windows-1.9.3.2.md">Acceptance and limits</a></p><p>For an existing city, make and verify a backup, close Townlight, run the signed Windows 1.9.3.2 MSI, then reopen Townlight under the same Windows account and existing profile. Direct upgrade is tested from 1.9.3.1; earlier paths have separate prior evidence.</p></section>
-    <p><strong>Townlight / Townlight Budget</strong></p>
-    <p><span class="badge">v0.2.0 packaged with Windows beta 1.9.3.2</span></p>
-    <h1>Budget narrative support without replacing the ERP.</h1>
-    <p class="lede">Townlight Budget v0.2.0 is packaged with Windows beta 1.9.3.2. It helps municipal finance teams prepare line-item variance notes, department narratives, memos, hearing packet checklists, resident summaries, optional GFOA presentation checklist reviews, and optional database-backed workpaper records. The standalone public page still serves workpapers at the existing path.</p>
-    <section class="grid">
-      <article class="card"><h2>Available Today</h2><p>Deterministic budget drafting helpers, optional workpaper persistence with <code>CIVICBUDGET_WORKPAPER_DB_URL</code>, bearer-token retrieval protection with <code>CIVICBUDGET_AUTH_TOKEN_ROLES</code>, FastAPI runtime, tests, release gate, and browser QA evidence. The standalone public page still serves workpapers at the existing path.</p></article>
-      <article class="card"><h2>Human Review</h2><p>Finance staff approve every number, narrative, public summary, and packet item before use.</p></article>
-      <article class="card boundary"><h2>Boundary</h2><p>Windows suite integration supports saved finance review, council adoption, and reviewed resident publication; accounting, payroll, and ERP remain external. Live LLM calls and live finance connectors remain unavailable.</p></article>
-    </section>
-    <p>Recovery evidence: <a href="release-recovery-status.md">read the release-recovery status</a>.</p>
-    <section class="card" style="margin-top:24px">
-      <h2>Architecture</h2>
-      <img src="architecture-civicbudget.svg" alt="Townlight Budget architecture diagram">
-    </section>
-    <section class="card" style="margin-top:24px">
-      <h2>Technical Facts</h2>
-      <p>Version: <strong>0.2.0</strong>. Dependency: packaged Windows beta 1.9.3.2 <code>townlight-core==1.3.0.dev2</code>. Repo: <a href="https://github.com/townlight/budget">townlight/budget</a>.</p>
-    </section>
+<body class="landing">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="landing-wrap masthead-inner">
+      <a href="https://townlight.github.io/" aria-label="Townlight home">
+        <img src="https://townlight.github.io/brand/svg/townlight-hall-lockup.svg" alt="Townlight" width="161" height="34">
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="https://townlight.github.io/#products">Products</a>
+        <a href="https://townlight.github.io/manuals/budget.html">Guide</a>
+        <a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/Townlight-Windows-x64-1.9.3.2.msi">Download</a>
+        <a href="https://github.com/townlight/budget">Source</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+  <section class="landing-hero" aria-labelledby="title">
+    <div class="landing-wrap hero-layout">
+      <div>
+        <div class="eyebrow">Townlight Budget / Finance</div>
+        <h1 id="title">Budget review that keeps its supporting record.</h1>
+        <p class="hero-copy">Budget imports figures, finance reviews them, seals the public hearing packet and records vote and adoption. Approved data goes through Data.</p>
+        <div class="actions"><a href="https://townlight.github.io/manuals/budget.html" class="button primary">Read the operating guide</a><a href="https://github.com/townlight/townlight/releases/tag/townlight-windows-v1.9.3.2" class="button">View Windows release</a></div>
+        <p class="release-line">Windows public beta · Townlight 1.9.3.2 · AGPL-3.0-only</p>
+      </div>
+      <figure class="workflow-sheet">
+      <figcaption><span class="eyebrow">Workflow guide</span>From imported figures to adopted budget</figcaption>
+      <ol>
+        <li><strong>Import figures</strong><span>Import departmental figures for finance review.</span></li>
+        <li><strong>Seal the public hearing packet</strong><span>Finance reviews the packet, seals it, and records the vote and adoption.</span></li>
+        <li><strong>Send approved data through Data</strong><span>Pass approved budget data through Data for reviewed release.</span></li>
+      </ol>
+      <p class="sheet-note">Illustrated workflow · staff review at each decision</p>
+    </figure>
+    </div>
+  </section>
+  <section class="landing-section landing-band" aria-labelledby="candidate-budget">
+    <div class="landing-wrap">
+      <div class="eyebrow">Signed public beta · Windows 1.9.3.2</div>
+      <h2 id="candidate-budget">Windows 1.9.3.2</h2>
+      <p class="component-version"><strong>Townlight Budget v0.2.0 is packaged with Windows beta 1.9.3.2.</strong> Recovery status: <a href="https://github.com/townlight/budget/blob/main/docs/release-recovery-status.md">release-recovery-status.md</a>. This package statement does not imply production readiness.</p>
+      <p class="section-intro">Private Records staff attachment downloads verify expected file size and SHA-256 before saving; Station operator controls work through session renewal. Release acceptance defines the tested workflows and limits; it does not claim every module was retested.</p>
+      <ul class="landing-link-list"><li><a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/Townlight-Windows-x64-1.9.3.2.msi">Windows 1.9.3.2 installer</a></li><li><a href="https://github.com/townlight/townlight/releases/tag/townlight-windows-v1.9.3.2">Release catalog</a></li><li><a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/SHA256SUMS-Windows-1.9.3.2.txt">SHA-256 checksums</a></li><li><a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/ACCEPTANCE-Windows-1.9.3.2.md">Acceptance and limits</a></li></ul>
+    </div>
+  </section>
+  <section class="landing-section landing-band" aria-labelledby="previous-1-9-3-1">
+    <div class="landing-wrap">
+      <div class="eyebrow">Previous release</div>
+      <h2 id="previous-1-9-3-1">Previous release: Windows 1.9.3.1</h2>
+      <p class="section-intro">Previous Windows release 1.9.3.1: documents the approved hosted Windows Budget workflow. See the release acceptance for exact evidence and limits.</p>
+      <ul class="landing-link-list"><li><a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.1/ACCEPTANCE-Windows-1.9.3.1.md">Windows 1.9.3.1 acceptance</a></li><li><a href="https://github.com/townlight/townlight/releases/tag/townlight-windows-v1.9.3.1">Release catalog</a></li><li><a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.1/ACCEPTANCE-Windows-1.9.3.1.md">Acceptance and limits</a></li></ul>
+    </div>
+  </section>
+  <section class="landing-section" aria-labelledby="capabilities">
+    <div class="landing-wrap">
+      <div class="eyebrow">Inside the workflow</div>
+      <h2 id="capabilities">What Budget supports</h2>
+      <div class="capability-columns">
+        <article><h3>Figure import</h3><p>Import figures with their source worksheets.</p></article>
+        <article><h3>Finance review</h3><p>Finance reviews and seals the public hearing packet.</p></article>
+        <article><h3>Vote and adoption record</h3><p>Record the vote and adoption, then send approved data through Data.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="landing-section landing-band" aria-labelledby="getting-started">
+    <div class="landing-wrap landing-split">
+      <div>
+        <div class="eyebrow">Evaluate locally</div>
+        <h2 id="getting-started">Start with one real workflow.</h2>
+        <p>Import figures, have finance review the packet, and follow the review checklist in the user manual.</p>
+        <ul class="landing-link-list"><li><a href="https://townlight.github.io/manuals/budget.html">Operating guide</a></li><li><a href="https://github.com/townlight/townlight/releases/tag/townlight-windows-v1.9.3.2">Release and checksums</a></li></ul>
+      </div>
+      <div class="landing-panel">
+        <h3>Scope of this beta</h3>
+        <p>Budget does not replace the finance system of record or make appropriation decisions. Finance staff review and seal every record.</p>
+        <a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/ACCEPTANCE-Windows-1.9.3.2.md">Read the installed acceptance</a>
+      </div>
+    </div>
+  </section>
+  <section class="landing-section" aria-labelledby="technical">
+    <div class="landing-wrap">
+      <div class="eyebrow">For technical teams</div>
+      <h2 id="technical">Inspect the implementation.</h2>
+      <p class="section-intro">Trace the workflow to the component source pinned by the Windows release. Use the reference for integration details and the repository to report an issue or contribute a change.</p>
+      <ul class="landing-link-list"><li><a href="https://github.com/townlight/budget/tree/180fa171f1ec511936fd5c7368d2c15988522b13">Released component source</a></li><li><a href="https://github.com/townlight/budget/tree/main/docs">API reference</a></li><li><a href="https://github.com/townlight/budget/blob/main/USER-MANUAL.md">Owner manual (Markdown)</a></li><li><a href="https://github.com/townlight/budget">Repository and contributions</a></li></ul>
+
+    </div>
+  </section>
   </main>
+<aside class="release-note" aria-label="Current release"><p><strong>Current release:</strong> Townlight for Windows 1.9.3.2 is a signed public beta. Private Records staff attachment downloads verify expected file size and SHA-256 before saving; Station operator controls work through session renewal. Release acceptance defines tested workflows and limits; it does not claim every module was retested. <a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/Townlight-Windows-x64-1.9.3.2.msi">Download MSI</a> · <a href="https://github.com/townlight/townlight/releases/tag/townlight-windows-v1.9.3.2">Release catalog</a> · <a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/SHA256SUMS-Windows-1.9.3.2.txt">SHA-256 checksums</a> · <a href="https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/ACCEPTANCE-Windows-1.9.3.2.md">Acceptance and limits</a> · <a href="https://townlight.github.io/versions.html">Versions</a></p></aside>
+  <footer class="landing-footer">
+    <div class="landing-wrap">
+      <span>Townlight · Open source municipal software</span>
+      <ul class="landing-link-list"><li><a href="https://townlight.github.io/support.html">Support</a></li><li><a href="https://townlight.github.io/versions.html">Versions</a></li><li><a href="https://townlight.github.io/brand/">Brand</a></li><li><a href="https://townlight.github.io/terms.html">Terms and license</a></li></ul>
+    </div>
+  </footer>
 </body>
 </html>
