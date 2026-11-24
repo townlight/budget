@@ -1,6 +1,12 @@
+## Windows 1.9.3.2 current release
+
+Townlight for Windows 1.9.3.2 is the current signed public beta. See the [release notes](https://github.com/townlight/townlight/releases/tag/townlight-windows-v1.9.3.2) and [acceptance record](https://github.com/townlight/townlight/releases/download/townlight-windows-v1.9.3.2/ACCEPTANCE-Windows-1.9.3.2.md).
+
+Townlight Windows 1.9.3.2 is a signed Suite package; Data, Budget, and Grants were first bundled in Windows 1.9.3.1 and remain in the current signed 1.9.3.2 Windows beta.
+
 # Townlight Budget 0.2.0 User Manual
 
-Applies to `townlight-budget` 0.2.0, not yet published. Source candidate for Windows packaging. Windows integrated workflow. Depends on exact `townlight-core==1.3.0.dev2`; no added requirements.
+Townlight Windows 1.9.3.2 is a signed Suite package; Data, Budget, and Grants were first bundled in Windows 1.9.3.1 and remain in the current signed 1.9.3.2 Windows beta.
 
 ## Roles
 

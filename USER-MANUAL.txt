@@ -1,80 +1,82 @@
-# Townlight Budget 0.2.0 User Manual
+Windows 1.9.3.2 current release
 
-Applies to `townlight-budget` 0.2.0, not yet published. Source candidate for Windows packaging. Windows integrated workflow. Depends on exact `townlight-core==1.3.0.dev2`; no added requirements.
+Townlight for Windows 1.9.3.2 is the current signed public beta. See the release notes and acceptance record.
 
-## Roles
+Townlight Windows 1.9.3.2 is a signed Suite package; Data, Budget, and Grants were first bundled in Windows 1.9.3.1 and remain in the current signed 1.9.3.2 Windows beta.
+
+Townlight Budget 0.2.0 User Manual
+
+Townlight Windows 1.9.3.2 is a signed Suite package; Data, Budget, and Grants were first bundled in Windows 1.9.3.1 and remain in the current signed 1.9.3.2 Windows beta.
+
+Roles
 
 Current roles: city-staff/admin review; clerk/admin records adoption; local-admin approves the queue. Resident export is via configured Portal Datasets.
 
-## Prepare and import
+Prepare and import
 
 On the full profile, select Budget. Existing city-staff/admin users import a UTF-8 CSV with this exact header:
 
-`department,account_code,description,prior_year_amount,proposed_amount`
+department,account_code,description,prior_year_amount,proposed_amount
 
-Example: `0100,05100,Office supplies,1234.50,1250.00`
+Example: 0100,05100,Office supplies,1234.50,1250.00
 
 Use leading zeros where needed and two decimal places. Any row error across the file rejects the whole import.
 
-## Review and revision file
+Review and revision file
 
-Review amounts in exact cents. City-staff/admin review checks the finance checkbox, then downloads `budget-revision.txt`. Workpapers are reusable. A standalone API supports narrative and checks.
+Review amounts in exact cents. City-staff/admin review checks the finance checkbox, then downloads budget-revision.txt. Workpapers are reusable. A standalone API supports narrative and checks.
 
-## Council and public packet
+Council and public packet
 
 In Meetings, clerk/admin records adoption: selects the public candidate agenda item, includes the unchanged file in the approved public council packet, and records the council motion and roll call. In Budget, select the meeting, approval, and motion; confirm carried with the reviewed public summary.
 
-## Queue and Portal Datasets
+Queue and Portal Datasets
 
 A local-admin approves the queue. A resident downloads CSV, JSON, dictionary, and summary from configured Portal Datasets. Queued means pending delivery.
 
-## Correct a draft
+Correct a draft
 
-Create a new revision with new approval evidence: corrected CSV, new city-staff/admin review, new finance checkbox, new `budget-revision.txt`, new packet/motion/roll call, and new Budget confirmation. Do not reuse prior approval evidence.
+Create a new revision with new approval evidence: corrected CSV, new city-staff/admin review, new finance checkbox, new budget-revision.txt, new packet/motion/roll call, and new Budget confirmation. Do not reuse prior approval evidence.
 
-## Scope
+Scope
 
 Budget handles a council adoption record only. Accounting, payroll, and ERP remain external.
 
-## IT / Technical Guide
+IT / Technical Guide
 
-### Runtime
+Runtime
 
-```bash
-python -m pip install -e ".[dev]"
-python -m uvicorn townlight_budget.main:app --host 127.0.0.1 --port 8139
-```
+    python -m pip install -e ".[dev]"
+    python -m uvicorn townlight_budget.main:app --host 127.0.0.1 --port 8139
 
-### Dependency
+Dependency
 
-The packaged Windows beta 1.9.3.1 uses `townlight-core==1.3.0.dev2`. The standalone API serves workpapers. The Windows suite runtime supplies the adoption workflow.
+The packaged Windows beta 1.9.3.1 uses townlight-core==1.3.0.dev2. The standalone API serves workpapers. The Windows suite runtime supplies the adoption workflow.
 
-### Verification
+Verification
 
-```bash
-bash scripts/verify-release.sh
-```
+    bash scripts/verify-release.sh
 
 The release gate checks documentation, placeholder imports, tests, Ruff, package build output, SHA256 sums, and the package version.
 
-### API Endpoints
+API Endpoints
 
-- `GET /`
-- `GET /health`
-- `GET /civicbudget`
-- `POST /api/v1/civicbudget/line-items`
-- `POST /api/v1/civicbudget/narrative`
-- `GET /api/v1/civicbudget/narrative/{narrative_id}`
-- `POST /api/v1/civicbudget/memo`
-- `POST /api/v1/civicbudget/hearing-packet`
-- `GET /api/v1/civicbudget/hearing-packet/{packet_id}`
-- `POST /api/v1/civicbudget/resident-summary`
-- `POST /api/v1/civicbudget/gfoa-review`
+- GET /
+- GET /health
+- GET /civicbudget
+- POST /api/v1/civicbudget/line-items
+- POST /api/v1/civicbudget/narrative
+- GET /api/v1/civicbudget/narrative/{narrative_id}
+- POST /api/v1/civicbudget/memo
+- POST /api/v1/civicbudget/hearing-packet
+- GET /api/v1/civicbudget/hearing-packet/{packet_id}
+- POST /api/v1/civicbudget/resident-summary
+- POST /api/v1/civicbudget/gfoa-review
 
-Set `CIVICBUDGET_WORKPAPER_DB_URL` to enable local SQLAlchemy-backed narrative and hearing packet workpaper records. If the variable is not set, Townlight Budget keeps deterministic stateless behavior and retrieval endpoints return actionable configuration guidance.
+Set CIVICBUDGET_WORKPAPER_DB_URL to enable local SQLAlchemy-backed narrative and hearing packet workpaper records. If the variable is not set, Townlight Budget keeps deterministic stateless behavior and retrieval endpoints return actionable configuration guidance.
 
-## Supporting Architecture
+Supporting Architecture
 
-![Townlight Budget architecture](docs/architecture-civicbudget.svg)
+[Townlight Budget architecture]
 
 The architecture is intentionally local and conservative in v0.1.2. Staff provide budget facts from official systems. Townlight Budget creates reviewable drafts, checklists, and optional local workpaper records. Finance staff approve outputs. Future releases can add read-only ERP imports, Townlight Meetings packet handoffs, and Townlight Data transparency publishing without changing the boundary that official decisions remain with municipal staff.
