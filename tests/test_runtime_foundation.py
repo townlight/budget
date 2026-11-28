@@ -122,7 +122,7 @@ def test_current_docs_are_version_and_dependency_current() -> None:
 
 def test_docs_index_marks_foundation_label_provisional() -> None:
     text = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
-    assert "Townlight Budget v0.2.0 is packaged with Windows beta 1.9.3.2" in text
+    assert "Townlight Budget v0.2.0 is packaged with Windows beta 1.10.0.1" in text
     assert "docs/release-recovery-status.md" in text
     assert "This package statement does not imply production readiness" in text
     assert "Shipping v0.1.2" not in text
